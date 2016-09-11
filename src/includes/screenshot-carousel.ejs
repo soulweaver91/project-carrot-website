@@ -1,0 +1,41 @@
+<div class="carousel-container js-veil">
+    <div class="carousel slide" data-ride="carousel" id="screenshots-carousel">
+        <ol class="carousel-indicators">
+            <% screenshots.forEach(function(screenshot, i) { %>
+            <li data-target="#screenshots-carousel" data-slide-to="<%= i %>"<% if (i == 0) { %>class="active"<% } %>></li>
+            <% }); %>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            <% screenshots.forEach(function(screenshot, i) { %>
+                <div class="item <% if (i == 0) {%>active<% }%>">
+                    <a rel="external" href="assets/<%= screenshot.name %>.png"
+                    ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/<%= screenshot.name %>.png" alt="<%= screenshot.title %>"
+                        ></a>
+                    <div class="carousel-caption">
+                        <%= screenshot.title %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+
+        <a class="left carousel-control" href="#screenshots-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#screenshots-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<noscript aria-hidden="true">
+    <div class="noscript-img-container">
+        <% screenshots.forEach(function(screenshot) { %>
+        <div class="img-thumbnail">
+            <a rel="external" href="assets/<%= screenshot.name %>.png"><img src="assets/<%= screenshot.name %>.jpg" alt="<%= screenshot.title %>"></a>
+            <span><%= screenshot.title %></span>
+        </div>
+        <% }); %>
+    </div>
+</noscript>

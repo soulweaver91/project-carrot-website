@@ -1,0 +1,31 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+        <tr>
+            <th style="width: 60%;">Component</th>
+            <th style="width: 15%;">Version</th>
+            <th style="width: 25%;">Released</th>
+            <th colspan="2" style="width: 0%;"><span class="sr-only">Download links</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var pkey in products) { %>
+            <%- include('product-row', { product: products[pkey] }) %>
+        <% } %>
+        <tr>
+            <th>Visual C++ 2015 Redistributable</th>
+            <td></td>
+            <td></td>
+            <td colspan="2" class="center">
+                <a class="btn btn-sm btn-raised btn-primary"
+                   href="https://www.microsoft.com/en-us/download/details.aspx?id=48145"
+                   rel="external" aria-role="button">
+                    <i class="fa fa-sizeup-base fa-download"></i>
+                    <span aria-label="Download Visual C++ 2015 Redistributable installer">Download</span>
+                    (13.1&ndash;13.9 <span aria-label="mebibytes">MiB</span>)
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

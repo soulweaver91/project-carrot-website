@@ -1,0 +1,30 @@
+<tr>
+    <th>
+        <div><%= product.name %></div>
+        <% if (product.footnote) { %>
+            <span class="download-note">
+                <%- product.footnote %>
+            </span>
+        <% } %>
+    </th>
+    <% if (!product.files.x86 && !product.files.x64) { %>
+        <td colspan="4" class="placeholder-cell">Precompiled binaries currently unavailable</td>
+    <% } else { %>
+        <% if (product.version != '0.0.0') { %>
+            <td><%= product.version %></td>
+            <td><%= product.released.format(dateFormat) %></td>
+        <% } else { %>
+            <td colspan="2"></td>
+        <% } %>
+        <td>
+            <% if (product.files.x86) { %>
+                <%- include('product-download-button', { file: product.files.x86, productName: product.name, bits: 32, isPrimary: false }) %>
+            <% } %>
+        </td>
+        <td>
+            <% if (product.files.x64) { %>
+                <%- include('product-download-button', { file: product.files.x64, productName: product.name, bits: 64, isPrimary: true }) %>
+            <% } %>
+        </td>
+    <% } %>
+</tr>

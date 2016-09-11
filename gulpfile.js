@@ -122,7 +122,7 @@ gulp.task('build-html', () => {
   }
 
   return gulp
-    .src("./src/**/*.ejs")
+    .src([ "!./src/includes/*.ejs", "./src/**/*.ejs" ])
     .pipe(ejs({
       buildDate: moment(),
       screenshots: config.screenshots,
