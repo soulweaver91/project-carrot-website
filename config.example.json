@@ -1,4 +1,10 @@
 {
+  "screenshots": [
+    {
+      "name": "filename_without_extension",
+      "title": "The display title of this screenshot"
+    }
+  ],
   "webpackEnv": {
     "ga": null
   }

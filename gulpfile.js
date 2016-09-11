@@ -109,14 +109,7 @@ gulp.task('build-html', () => {
     .src("./src/**/*.ejs")
     .pipe(ejs({
       buildDate: moment(),
-      screenshots: [
-        { name: 'screen1', title: 'Dungeon Dilemma' },
-        { name: 'screen2', title: 'Tossed Salad' },
-        { name: 'screen3', title: 'Hare Scare' },
-        { name: 'screen4', title: 'Easter Bunny' },
-        { name: 'screen5', title: 'Jungle Jump' },
-        { name: 'screen6', title: 'Main Menu' }
-      ],
+      screenshots: config.screenshots,
       files: fileData,
       dateFormat: 'Do MMMM, YYYY',
       timeFormat: 'HH:mm:ss'
