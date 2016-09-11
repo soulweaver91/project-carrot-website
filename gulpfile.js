@@ -191,6 +191,10 @@ gulp.task('archive', () => {
     let product = products[productName];
     let version = (!product.version ? '' : '-' + product.version);
 
+    if (!product.platforms) {
+      continue;
+    }
+
     product.platforms.forEach((platform) => {
       promises.push(new Promise((resolve, reject) => {
         var outputFilename = `${productName}${version}-${platform.architecture}.zip`;
