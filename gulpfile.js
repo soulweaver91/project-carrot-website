@@ -9,6 +9,7 @@ var moment = require('moment');
 var config = require('./config.json');
 var fs = require('fs');
 var zip = require('gulp-zip');
+var argv = require('yargs').argv;
 
 gulp.task('build-js', (cb) => {
   return webpack({
@@ -155,10 +156,20 @@ gulp.task('gen-ss-thumbs', () => {
 
 gulp.task('archive', () => {
   var promises = [];
-  for (let moduleName in config.archives) {
-    let module = config.archives[moduleName];
+
+  let archives = {};
+  if (argv.module) {
+    if (config.archives[argv.module]) {
+      archives[argv.module] = config.archives[argv.module];
+    }
+  } else {
+    archives = config.archives;
+  }
+
+  for (let moduleName in archives) {
+    let module = archives[moduleName];
     let version = (!module.version ? '' : '-' + module.version);
-    
+
     module.platforms.forEach((platform) => {
       promises.push(new Promise((resolve, reject) => {
         var outputFilename = `${moduleName}${version}-${platform.architecture}.zip`;
