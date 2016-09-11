@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<%
+ var formatSize = function(bytes) {
+   if (bytes < 1e6) {
+     return (bytes / (1024 * 1024)).toPrecision(1);
+   } else {
+     return (bytes / (1024 * 1024)).toFixed(1);
+   }
+ };
+-%><!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Project Carrot</title>
@@ -186,101 +194,48 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>
-                                <div>Project Carrot</div>
-                                    <span class="download-note">Compatible with
-                                    <span aria-label="P C A E">PCAE</span> 0.9.4&ndash;0.9.6
-                                    and
-                                    <span aria-label="P C L C">PCLC</span> 0.5.9
-                                    </span>
-                            </th>
-                            <td colspan="4" class="placeholder-cell">Precompiled binaries currently unavailable</td>
-                        </tr>
-                        <tr>
-                            <th>PC Anim Extractor</th>
-                            <td>0.9.6</td>
-                            <td>15th May, 2016</td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-default" href="files/pcae-0.9.6-x86.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 32-bit version of Project Carrot Anim Extractor">32-bit</span>
-                                    (0.1 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-primary" href="files/pcae-0.9.6-x64.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 64-bit version of Project Carrot Anim Extractor">64-bit</span>
-                                    (0.2 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>PC Level Converter</th>
-                            <td>0.5.9</td>
-                            <td>14th May, 2016</td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-default" href="files/pclc-0.5.9-x86.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 32-bit version of Project Carrot Level Converter">32-bit</span>
-                                    (0.04 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-primary" href="files/pclc-0.5.9-x64.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 64-bit version of Project Carrot Level Converter">64-bit</span>
-                                    (0.05 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>PC Tileset Converter</th>
-                            <td>1.0.0</td>
-                            <td>19th April, 2016</td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-default" href="files/pctc-1.0.0-x86.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 32-bit version of Project Carrot Tileset Converter">32-bit</span>
-                                    (0.02 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-primary" href="files/pctc-1.0.0-x64.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 64-bit version of Project Carrot Tileset Converter">64-bit</span>
-                                    (0.02 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Common runtime libraries</th>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-default" href="files/pc-crtlib-x86.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 32-bit versions of common runtime libraries">32-bit</span>
-                                    (19.6 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-sm btn-raised btn-primary" href="files/pc-crtlib-x64.zip"
-                                   aria-role="button">
-                                    <i class="fa fa-sizeup-base fa-download"></i>
-                                    <span aria-label="Download 64-bit versions of common runtime libraries">64-bit</span>
-                                    (21.3 <span aria-label="mebibytes">MiB</span>)
-                                </a>
-                            </td>
-                        </tr>
+                        <% for (var pkey in files) {
+                            var product = files[pkey]; %>
+                            <tr>
+                                <th>
+                                    <div><%= product.name %></div>
+                                    <% if (product.footnote) { %>
+                                        <span class="download-note"><%- product.footnote %>
+                                        </span>
+                                    <% } %>
+                                </th>
+                                <% if (!product.files.x86 && !product.files.x64) { %>
+                                    <td colspan="4" class="placeholder-cell">Precompiled binaries currently unavailable</td>
+                                <% } else { %>
+                                    <% if (product.version != '0.0.0') { %>
+                                        <td><%= product.version %></td>
+                                        <td><%= product.released.format(dateFormat) %></td>
+                                    <% } else { %>
+                                        <td colspan="2"></td>
+                                    <% } %>
+                                    <td>
+                                        <% if (product.files.x86) { %>
+                                            <a class="btn btn-sm btn-raised btn-default" href="files/<%= product.files.x86.fullFilename %>"
+                                               aria-role="button">
+                                                <i class="fa fa-sizeup-base fa-download"></i>
+                                                <span aria-label="Download 32-bit version of <%= product.name %>">32-bit</span>
+                                                (<%= formatSize(product.files.x86.stats.size) %> <span aria-label="mebibytes">MiB</span>)
+                                            </a>
+                                        <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (product.files.x64) { %>
+                                            <a class="btn btn-sm btn-raised btn-primary" href="files/<%= product.files.x64.fullFilename %>"
+                                               aria-role="button">
+                                                <i class="fa fa-sizeup-base fa-download"></i>
+                                                <span aria-label="Download 64-bit version of <%= product.name %>">64-bit</span>
+                                                (<%= formatSize(product.files.x64.stats.size) %> <span aria-label="mebibytes">MiB</span>)
+                                            </a>
+                                        <% } %>
+                                    </td>
+                                <% } %>
+                            </tr>
+                        <% } %>
                         <tr>
                             <th>Visual C++ 2015 Redistributable</th>
                             <td></td>
@@ -388,7 +343,7 @@
                     with <i class="fa fa-sizeup-base fa-heart" aria-label="love"></i>
                 </div>
                 <div>
-                    Site built at <%= buildDate %> with
+                    Site built on <%= buildDate.format(dateFormat) %> at <%= buildDate.format(timeFormat) %> with
                     <a rel="external" href="http://jquery.com/" aria-label="J Query">jQuery</a>
                     by <span aria-label="J Query">jQuery</span> Foundation,
                     <a rel="external" href="http://getbootstrap.com/">Bootstrap 3</a> by
