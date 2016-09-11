@@ -5,7 +5,7 @@ var formatSize = function(bytes) {
     } else {
         return (bytes / (1024 * 1024)).toFixed(1);
     }
-}; -%><a class="btn btn-sm btn-raised btn-<%= (isPrimary ? 'primary' : 'default') %>" href="files/<%= file %>" aria-role="button">
+}; -%><a class="btn btn-sm btn-raised btn-<%= (isPrimary ? 'primary' : 'default') %>" href="files/<%= file.fullFilename %>" aria-role="button">
     <i class="fa fa-sizeup-base fa-download"></i>
     <span aria-label="Download <%= bits %>-bit version of <%= productName %>"><%= bits %>-bit</span>
     (<%= formatSize(file.stats.size) %> <span aria-label="mebibytes">MiB</span>)
