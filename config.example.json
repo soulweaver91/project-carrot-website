@@ -5,6 +5,12 @@
       "title": "The display title of this screenshot"
     }
   ],
+  "modules": {
+    "module_filename_part": {
+      "name": "Display title of module",
+      "footnote": "HTML-enabled note to be displayed under the title"
+    }
+  },
   "webpackEnv": {
     "ga": null
   }

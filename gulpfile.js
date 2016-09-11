@@ -40,23 +40,13 @@ gulp.task('build-style', () => {
 });
 
 gulp.task('build-html', () => {
-  var modules = {
-    'carrot': { 'name': 'Project Carrot', 'footnote': 'Compatible with ' +
-      '<span aria-label="P C A E">PCAE</span> 0.9.4&ndash;0.9.6 and ' +
-      '<span aria-label="P C L C">PCLC</span> 0.5.9' },
-    'pcae': { 'name': 'PC Anim Extractor', 'footnote': '' },
-    'pclc': { 'name': 'PC Level Converter', 'footnote': '' },
-    'pctc': { 'name': 'PC Tileset Converter', 'footnote': '' },
-    'pc-crtlib': { 'name': 'Common runtime libraries', 'footnote': '' }
-  };
-
   var fileData = {};
-  for (var product in modules) {
+  for (var product in config.modules) {
     fileData[product] = {
       module: product,
       version: null,
-      name: modules[product].name,
-      footnote: modules[product].footnote,
+      name: config.modules[product].name,
+      footnote: config.modules[product].footnote,
       files: {
         x86: null,
         x64: null
