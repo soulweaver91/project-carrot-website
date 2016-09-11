@@ -46,12 +46,12 @@ gulp.task('build-style', () => {
 gulp.task('build-html', () => {
   var filesRoot = './dist/files/';
   var fileData = {};
-  for (var product in config.modules) {
+  for (var product in config.products) {
     fileData[product] = {
-      module: product,
+      product: product,
       version: null,
-      name: config.modules[product].name,
-      footnote: config.modules[product].footnote,
+      name: config.products[product].name,
+      footnote: config.products[product].footnote,
       files: {
         x86: null,
         x64: null
@@ -92,7 +92,7 @@ gulp.task('build-html', () => {
 
         fileData[parts[1]].files[parts[3]] = {
           fullFilename: parts[0],
-          module: parts[1],
+          product: parts[1],
           version: parts[2],
           architecture: parts[3],
           platform: 'windows',
@@ -178,25 +178,25 @@ gulp.task('gen-ss-thumbs', () => {
 gulp.task('archive', () => {
   var promises = [];
 
-  let archives = {};
-  if (argv.module) {
-    if (config.archives[argv.module]) {
-      archives[argv.module] = config.archives[argv.module];
+  let products = {};
+  if (argv.product) {
+    if (config.products[argv.product]) {
+      products[argv.product] = config.products[argv.product];
     }
   } else {
-    archives = config.archives;
+    products = config.products;
   }
 
-  for (let moduleName in archives) {
-    let module = archives[moduleName];
-    let version = (!module.version ? '' : '-' + module.version);
+  for (let productName in products) {
+    let product = products[productName];
+    let version = (!product.version ? '' : '-' + product.version);
 
-    module.platforms.forEach((platform) => {
+    product.platforms.forEach((platform) => {
       promises.push(new Promise((resolve, reject) => {
-        var outputFilename = `${moduleName}${version}-${platform.architecture}.zip`;
+        var outputFilename = `${productName}${version}-${platform.architecture}.zip`;
 
         gulp
-          .src(platform.files.concat(module.commonFiles))
+          .src(platform.files.concat(product.commonFiles))
           .pipe(zip(outputFilename))
           .pipe(gulp.dest('dist/files'))
           .on('end', resolve)

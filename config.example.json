@@ -14,17 +14,13 @@
       "title": "The display title of this screenshot"
     }
   ],
-  "modules": {
-    "module_filename_part": {
-      "name": "Display title of module",
-      "footnote": "HTML-enabled note to be displayed under the title"
-    }
-  },
-  "archives": {
-    "module_filename_part": {
+  "products": {
+    "product_filename_part": {
+      "name": "Display title of product",
+      "footnote": "HTML-enabled note to be displayed under the title",
       "version": "0.0.0",
       "commonFiles": [
-        "glob paths to files to be included in all archive versions of the module",
+        "glob paths to files to be included in all archive versions of the product",
         "folder hierarchy can be forced to a certain level by using @() operator, i.e. ...qt/plugins/@(platforms)/qminimal.dll will archive qminimal.dll into a platforms folder"
       ],
       "platforms": [
