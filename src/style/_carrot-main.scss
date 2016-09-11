@@ -124,6 +124,11 @@ section {
 footer {
   margin: 2em;
   text-align: center;
+
+  .footer-build-info {
+    margin-top: .5em;
+    font-size: 80%;
+  }
 }
 
 .fa-sizeup-base {

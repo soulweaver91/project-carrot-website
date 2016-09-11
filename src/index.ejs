@@ -338,12 +338,12 @@
             <footer class="footer">
                 <div>
                     Project and content &copy;
-                    <span aria-label="from 2013 to 2016">2013&ndash;2016</span>
+                    <span aria-label="from 2013 to <%= buildDate.year() %>">2013&ndash;<%= buildDate.year() %></span>
                     by <a rel="external" href="https://github.com/soulweaver91">Soulweaver</a>
                     with <i class="fa fa-sizeup-base fa-heart" aria-label="love"></i>
                 </div>
-                <div>
-                    Site built on <%= buildDate.format(dateFormat) %> at <%= buildDate.format(timeFormat) %> with
+                <div class="footer-libs-info">
+                    Site built with
                     <a rel="external" href="http://jquery.com/" aria-label="J Query">jQuery</a>
                     by <span aria-label="J Query">jQuery</span> Foundation,
                     <a rel="external" href="http://getbootstrap.com/">Bootstrap 3</a> by
@@ -353,6 +353,15 @@
                     <a rel="external" href="https://github.com/aFarkas/lazysizes">lazysizes</a> by
                     <span lang="de">Alexander Farkas</span>,
                     each licensed under the <a rel="external" href="https://opensource.org/licenses/MIT">MIT License</a>.
+                </div>
+                <div class="footer-build-info">
+                    Site build:
+                    <% if (git.isGit) { %>
+                        <a href="<%= git.linkBase %><%= git.full %>" rel="external">git-<%= git.branch %>-<%= git.short %></a>
+                    <% } else { %>
+                        Custom
+                    <% } %>
+                    on <%= buildDate.format(dateFormat) %> at <%= buildDate.format(timeFormat) %>
                 </div>
             </footer>
         </div>

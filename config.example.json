@@ -38,5 +38,6 @@
   },
   "webpackEnv": {
     "ga": null
-  }
+  },
+  "commitUrlBase": "https://github.com/your-name/your-fork-name/tree/"
 }

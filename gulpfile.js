@@ -10,6 +10,7 @@ var config = require('./config.json');
 var fs = require('fs');
 var zip = require('gulp-zip');
 var argv = require('yargs').argv;
+var git = require('git-rev-sync');
 
 gulp.task('build-js', (cb) => {
   return webpack({
@@ -102,6 +103,24 @@ gulp.task('build-html', () => {
     // Files not available (gulp archive not run?), just don't render the files as available.
   }
 
+  var gitData = {};
+  try {
+    gitData = {
+      isGit: true,
+      short: git.short(),
+      full: git.long(),
+      branch: git.branch(),
+      linkBase: config.commitUrlBase
+    };
+  } catch (e) {
+    gitData = {
+      isGit: false,
+      short: null,
+      full: null,
+      branch: null
+    };
+  }
+
   return gulp
     .src("./src/**/*.ejs")
     .pipe(ejs({
@@ -109,7 +128,8 @@ gulp.task('build-html', () => {
       screenshots: config.screenshots,
       files: fileData,
       dateFormat: 'Do MMMM, YYYY',
-      timeFormat: 'HH:mm:ss'
+      timeFormat: 'HH:mm:ss',
+      git: gitData
     }, {
       ext: '.html'
     }))
