@@ -7,11 +7,16 @@ available at [https://carrot.soulweaver.fi/](https://carrot.soulweaver.fi/).
 Building
 --------
 
-A modern version of [Node.js](https://nodejs.org/) is required.
+A modern version of [Node.js](https://nodejs.org/) and an installation of
+[GraphicsMagick](http://www.graphicsmagick.org/) available on `PATH` is required.
 
 ```shell
 npm install -g gulp-cli
 npm install
+cp config.example.json config.json
+# Edit the config
+# Copy the downloadables to a folder called files
+# and screenshots to a folder called screenshots
 gulp build
 ```
 

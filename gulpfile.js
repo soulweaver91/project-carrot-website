@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var ejs = require('gulp-ejs');
 var sass = require('gulp-sass');
+var imagemin = require('gulp-imagemin');
+var resizer = require('gulp-image-resize');
 var webpack = require('webpack');
 var semver = require('semver');
 var moment = require('moment');
@@ -143,4 +145,23 @@ gulp.task('copy-assets', () => {
     .pipe(gulp.dest('./dist/assets'));
 });
 
-gulp.task('build', [ 'build-js', 'build-style', 'build-html', 'copy-fonts', 'copy-assets' ]);
+gulp.task('optimize-ss', () => {
+  return gulp
+    .src('./screenshots/*.png')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist/assets'))
+});
+
+gulp.task('gen-ss-thumbs', () => {
+  return gulp
+    .src('./screenshots/*.png')
+    .pipe(resizer({
+      width: 200,
+      format: 'jpg',
+      filter: 'Catrom',
+      quality: 0.8
+    }))
+    .pipe(gulp.dest('dist/assets'))
+});
+
+gulp.task('build', [ 'build-js', 'build-style', 'build-html', 'copy-fonts', 'copy-assets', 'optimize-ss', 'gen-ss-thumbs' ]);
