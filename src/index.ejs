@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Project Carrot</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Soulweaver">
+    <meta name="keywords" content="project carrot, jazz jackrabbit, jazz jackrabbit 2, platform game">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="shortcut icon" href="assets/PCIconLowRes.png" />
+</head>
+<body>
+<div id="mainContainer">
+    <div id="navMain">
+        <div id="mainLogo">
+            <div id="logo">
+                <div style="min-width: 0;">
+                    <img src="assets/pixel.gif" data-src="assets/PCLogo.png" alt="" class="lazyload hidden-xs">
+                    <img src="assets/pixel.gif" data-src="assets/PCIconLowRes.png" alt="" class="lazyload visible-xs">
+                    <noscript aria-hidden="true">
+                        <img src="assets/PCLogo.png" alt="" class="hidden-xs">
+                        <img src="assets/PCIconLowRes.png" alt="" class="visible-xs">
+                    </noscript>
+                </div>
+            </div>
+            <h1 class="visible-xs">Project Carrot</h1>
+        </div>
+
+        <div id="navItems">
+            <ul class="nav nav-pills nav-stacked" aria-role="navigation">
+                <li><a href="#about"><i class="fa fa-sizeup-base fa-info-circle"></i> About</a></li>
+                <li><a href="#screenshots"><i class="fa fa-sizeup-base fa-camera" aria-hidden="true"></i> Screenshots and media</a></li>
+                <li><a href="#downloads"><i class="fa fa-sizeup-base fa-download" aria-hidden="true"></i> Downloads</a></li>
+                <li><a href="#development"><i class="fa fa-sizeup-base fa-code" aria-hidden="true"></i> Development</a></li>
+                <li><a href="#license"><i class="fa fa-sizeup-base fa-balance-scale" aria-hidden="true"></i> License</a></li>
+                <li><a href="#links"><i class="fa fa-sizeup-base fa-globe" aria-hidden="true"></i>
+                    Other <span class="visible-xs-inline visible-lg-inline">projects and resources</span>
+                    <span class="visible-sm-inline visible-md-inline" aria-hidden="true">links</span>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="contentMain">
+        <div class="container-fluid">
+            <section id="about">
+                <h2>About</h2>
+                <p>
+                    Project Carrot is a clone of the 1998 Windows and Mac video game
+                    <a rel="external" href="https://en.wikipedia.org/wiki/Jazz_Jackrabbit_2">Jazz Jackrabbit 2</a> by
+                    <a rel="external" href="https://www.epicgames.com/">Epic MegaGames</a> that aims to replicate the
+                    original game in spirit and functionality while embracing modern design choices and
+                    aiming to be extendable on its later stages.
+                </p>
+                <p>
+                    Originally started in 2013, Project Carrot was in works for about half a year before
+                    its development first slowed down and ultimately ground to a halt for a good while.
+                    In 2016, development resumed once again. Up to this point, Project Carrot has been
+                    entirely a single person project.
+                </p>
+                <p>
+                    The Project Carrot family comprises of the main game and several utilities that are
+                    more or less essential for running it. <strong>Project Carrot Anim Extractor</strong>
+                    (<span aria-label="P C A E">PCAE</span>) is used to extract the required graphic and sound
+                    resources from the original game files, while <strong>Project Carrot Level Converter</strong>
+                    (<span aria-label="P C L C">PCLC</span>) and <strong>Project Carrot Tileset Converter</strong>
+                    (<span aria-label="P C T C">PCTC</span>) convert <code>.j2l</code> and
+                    <code>.j2t</code> level and tileset files to Project Carrot's native formats.
+                    Additionally, a native level editor, <strong>Carrot Creator</strong>, has been planned.
+                </p>
+
+                <p>
+                    Project Carrot is still very much an in-progress project, and thus only a fraction of the
+                    features of the original game are supported. The current features include:
+                </p>
+
+                <ul>
+                    <li>Basic single-player gameplay with one of the three official characters</li>
+                    <li>Close to complete <span aria-label="Jazz Jackrabbit 2">JJ2</span> tileset and layer configuration compatibility</li>
+                    <li>Most level traversal events, like vines, springs, warps, and destructible scenery implemented</li>
+                    <li>Four of the nine official weapons available at varying stages of completion</li>
+                    <li>Five of the ~35 enemy types present</li>
+                    <li>Open source code with dependency libraries available to all three major desktop platforms</li>
+                </ul>
+
+            </section>
+
+            <section id="screenshots">
+                <h2>Project Carrot media</h2>
+
+                <h3>Screenshots</h3>
+
+                <div class="carousel-container js-veil">
+                    <div class="carousel slide" data-ride="carousel" id="screenshots-carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#screenshots-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#screenshots-carousel" data-slide-to="1"></li>
+                            <li data-target="#screenshots-carousel" data-slide-to="2"></li>
+                            <li data-target="#screenshots-carousel" data-slide-to="3"></li>
+                            <li data-target="#screenshots-carousel" data-slide-to="4"></li>
+                            <li data-target="#screenshots-carousel" data-slide-to="5"></li>
+                        </ol>
+
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <a rel="external" href="assets/screen1.png"
+                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen1.png" alt="Dungeon Dilemma"
+                                ></a>
+                                <div class="carousel-caption">
+                                    Dungeon Dilemma
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a rel="external" href="assets/screen2.png"
+                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen2.png" alt="Tossed Salad"
+                                ></a>
+                                <div class="carousel-caption">
+                                    Tossed Salad
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a rel="external" href="assets/screen3.png"
+                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen3.png" alt="Hare Scare"
+                                ></a>
+                                <div class="carousel-caption">
+                                    Hare Scare
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a rel="external" href="assets/screen4.png"
+                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen4.png" alt="Easter Bunny"
+                                ></a>
+                                <div class="carousel-caption">
+                                    Easter Bunny
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a rel="external" href="assets/screen5.png"
+                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen5.png" alt="Jungle Jump"
+                                ></a>
+                                <div class="carousel-caption">
+                                    Jungle Jump
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a rel="external" href="assets/screen6.png"
+                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen6.png" alt="Main Menu"
+                                ></a>
+                                <div class="carousel-caption">
+                                    Main Menu
+                                </div>
+                            </div>
+                        </div>
+
+                        <a class="left carousel-control" href="#screenshots-carousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#screenshots-carousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <noscript aria-hidden="true">
+                    <div class="noscript-img-container">
+                        <div class="img-thumbnail">
+                            <a rel="external" href="assets/screen1.png"><img src="assets/screen1.jpg" alt="Dungeon Dilemma"></a>
+                            <span>Dungeon Dilemma</span>
+                        </div>
+                        <div class="img-thumbnail">
+                            <a rel="external" href="assets/screen2.png"><img src="assets/screen2.jpg" alt="Tossed Salad"></a>
+                            <span>A Diamondus Forever</span>
+                        </div>
+                        <div class="img-thumbnail">
+                            <a rel="external" href="assets/screen3.png"><img src="assets/screen3.jpg" alt="Hare Scare"></a>
+                            <span>Hare Scare</span>
+                        </div>
+                        <div class="img-thumbnail">
+                            <a rel="external" href="assets/screen4.png"><img src="assets/screen4.jpg" alt="Easter Bunny"></a>
+                            <span>Spring Chickens</span>
+                        </div>
+                        <div class="img-thumbnail">
+                            <a rel="external" href="assets/screen4.png"><img src="assets/screen5.jpg" alt="Main Menu"></a>
+                            <span>Spring Chickens</span>
+                        </div>
+                    </div>
+                </noscript>
+
+                <h3>Other media</h3>
+
+                <p>
+                    Project Carrot was showcased in action three times on YouTube. The first two times were in
+                    <a href="https://www.youtube.com/watch?v=V7jeLF_v6xI" rel="external">May 2013</a> and
+                    again in <a href="https://www.youtube.com/watch?v=_uFeWwbaKcg" rel="external">October 2013</a>,
+                    each providing raw footage of the game running. The third video was released in
+                    <a href="https://www.youtube.com/watch?v=LOS92nuHoXQ" rel="external">May 2016</a> and
+                    included a full voiceover and displayed multiple levels played from start to finish,
+                    albeit with minimal resistance due to the lack of enemies.
+                </p>
+            </section>
+
+            <section id="downloads">
+                <h2>Downloads</h2>
+                <p>
+                    The following binaries for different Project Carrot components are available.
+                    At the moment, only Windows systems from Vista and above are supported. If you are
+                    unsure which version you should download, pick the 64-bit one; 32-bit builds are
+                    primarily provided for compatibility with very old or low-end systems.
+                </p>
+
+                <p>
+                    Project Carrot requires a fairly modern graphics card with shader support and a minimum
+                    supported texture size of <span aria-label="4096 by 4096">4096&times;4096</span> pixels.
+                    In 2016, this should only rule out low-end cards that are several generations behind.
+                    It does mean that you cannot run Project Carrot in certain contexts, like through Remote
+                    Desktop, though.
+                </p>
+
+                <div class="alert alert-danger">
+                    <strong>ATTENTION:</strong> All of the listed binaries rely on the common runtime libraries
+                    and the linked Visual C++ redistributable! If you have not yet installed the redistributable
+                    package before, do so. For the library package, extract it in the same folder as the binaries
+                    themselves to be able to run them.
+                </div>
+
+                <div class="alert alert-warning">
+                    The common libraries archives have been changed! If you downloaded either of them at any time
+                    before 15th May, 2016, you will run into problems due to the missing platform libraries
+                    for both archives as well as mistakenly packaged 64-bit versions of BASS and BASS FX
+                    in the 32-bit archive. Download the new version for fixes to these.
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-condensed">
+                        <thead>
+                        <tr>
+                            <th style="width: 60%;">Component</th>
+                            <th style="width: 15%;">Version</th>
+                            <th style="width: 25%;">Released</th>
+                            <th colspan="2" style="width: 0%;"><span class="sr-only">Download links</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div>Project Carrot</div>
+                                    <span class="download-note">Compatible with
+                                    <span aria-label="P C A E">PCAE</span> 0.9.4&ndash;0.9.6
+                                    and
+                                    <span aria-label="P C L C">PCLC</span> 0.5.9
+                                    </span>
+                            </th>
+                            <td colspan="4" class="placeholder-cell">Precompiled binaries currently unavailable</td>
+                        </tr>
+                        <tr>
+                            <th>PC Anim Extractor</th>
+                            <td>0.9.6</td>
+                            <td>15th May, 2016</td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-default" href="files/pcae-0.9.6-x86.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 32-bit version of Project Carrot Anim Extractor">32-bit</span>
+                                    (0.1 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-primary" href="files/pcae-0.9.6-x64.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 64-bit version of Project Carrot Anim Extractor">64-bit</span>
+                                    (0.2 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>PC Level Converter</th>
+                            <td>0.5.9</td>
+                            <td>14th May, 2016</td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-default" href="files/pclc-0.5.9-x86.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 32-bit version of Project Carrot Level Converter">32-bit</span>
+                                    (0.04 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-primary" href="files/pclc-0.5.9-x64.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 64-bit version of Project Carrot Level Converter">64-bit</span>
+                                    (0.05 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>PC Tileset Converter</th>
+                            <td>1.0.0</td>
+                            <td>19th April, 2016</td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-default" href="files/pctc-1.0.0-x86.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 32-bit version of Project Carrot Tileset Converter">32-bit</span>
+                                    (0.02 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-primary" href="files/pctc-1.0.0-x64.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 64-bit version of Project Carrot Tileset Converter">64-bit</span>
+                                    (0.02 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Common runtime libraries</th>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-default" href="files/pc-crtlib-x86.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 32-bit versions of common runtime libraries">32-bit</span>
+                                    (19.6 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-raised btn-primary" href="files/pc-crtlib-x64.zip"
+                                   aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download 64-bit versions of common runtime libraries">64-bit</span>
+                                    (21.3 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Visual C++ 2015 Redistributable</th>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2" class="center">
+                                <a class="btn btn-sm btn-raised btn-primary"
+                                   href="https://www.microsoft.com/en-us/download/details.aspx?id=48145"
+                                   rel="external" aria-role="button">
+                                    <i class="fa fa-sizeup-base fa-download"></i>
+                                    <span aria-label="Download Visual C++ 2015 Redistributable installer">Download</span>
+                                    (13.1&ndash;13.9 <span aria-label="mebibytes">MiB</span>)
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="development">
+                <h2>Development</h2>
+
+                <p>
+                    The source code for Project Carrot is available at
+                    <a rel="external" href="https://github.com/soulweaver91/project-carrot">its GitHub repository</a>.
+                    The readme file for the repository details the requirements for compiling the game yourself.
+                    GitHub also hosts the source code for
+                    <a rel="external" href="https://github.com/soulweaver91/project-carrot-pcae" aria-label="P C A E">PCAE</a>,
+                    <a rel="external" href="https://github.com/soulweaver91/project-carrot-pclc" aria-label="P C L C">PCLC</a>, and
+                    <a rel="external" href="https://github.com/soulweaver91/project-carrot-pctc" aria-label="P C T C">PCTC</a>.
+                </p>
+
+                <p>
+                    Project Carrot projects are built on
+                    <a href="http://www.qt.io/developers/" rel="external" aria-label="Cute">Qt</a>,
+                    a comprehensive framework for a wide array of software;
+                    <a href="http://www.sfml-dev.org/" rel="external" aria-label="Simple and Fast Multimedia Library (S F M L)">SFML</a>,
+                    an easy-to-use yet still efficient multimedia library;
+                    and <a href="http://www.un4seen.com/" rel="external">BASS</a>,
+                    a powerful audio engine. Each of these is available to all three major platforms &mdash;
+                    Windows, Mac OS X, and Linux &mdash; making it possible to compile and run Project Carrot
+                    on each of them.
+                </p>
+
+                <p>
+                    Due to the currently volatile nature of the project structure, third-party contributions
+                    are discouraged at this time. This may change on a later date.
+                </p>
+            </section>
+
+            <section id="license">
+                <h2>License</h2>
+
+                <p>
+                    Project Carrot and its sister projects are each licensed under the
+                    <a rel="external" href="https://opensource.org/licenses/MIT">MIT License</a>.
+                    What this means in practice is that you are free to do whatever you like with the source code
+                    or the compiled binaries, at your own risk and discretion, as long as the original copyright
+                    message and licensing information is kept intact. However, please observe and understand the
+                    following terms on the licensing of the third-party libraries.
+                </p>
+
+                <ul>
+                    <li>
+                        <span aria-label="Cute">Qt</span> is licensed under the
+                        <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html" rel="external">GNU Lesser General Public License
+                            <span aria-label="version 3">v3</span></a>. The source code for <span aria-label="Cute">Qt</span> is
+                        <a href="https://www.qt.io/download-open-source/" rel="external">available on their website</a>.
+                    </li>
+                    <li>
+                        <span aria-label="S F M L">SFML</span> is licensed under the
+                        <a href="https://opensource.org/licenses/Zlib" rel="external"
+                           aria-label="zee lib slash lib ping license">zlib/libpng license</a> and is
+                        free for any use.
+                    </li>
+                    <li>
+                        BASS is free to use for non-commercial projects only; commercial use of BASS requires a
+                        separate license. BASS FX is free to use in any kind of software, but a donation to the
+                        author is suggested if used in commercial context.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="links">
+                <h2>Other projects and resources</h2>
+
+                <p>
+                    Jazz Jackrabbit 2 still has an active community over at
+                    <a rel="external" href="http://www.jazz2online.com/">Jazz 2 Online</a>,
+                    so please go give them a visit. On their site you can also find the
+                    <a rel="external" href="http://www.jazz2online.com/jcf/showthread.php?t=19489"
+                       aria-label="Jazz Jackrabbit 2 Plus">JJ2+</a>
+                    patch, which adds a slew of new features into the original game, including
+                    full-fledged scripting support. Finally, Project Carrot also has
+                    <a href="http://www.jazz2online.com/jcf/showthread.php?t=19535" rel="external">a
+                        discussion thread on their forums</a> if you wish to provide feedback.
+                </p>
+            </section>
+
+            <footer class="footer">
+                <div>
+                    Project and content &copy;
+                    <span aria-label="from 2013 to 2016">2013&ndash;2016</span>
+                    by <a rel="external" href="https://github.com/soulweaver91">Soulweaver</a>
+                    with <i class="fa fa-sizeup-base fa-heart" aria-label="love"></i>
+                </div>
+                <div>
+                    Site built at <%= buildDate %> with
+                    <a rel="external" href="http://jquery.com/" aria-label="J Query">jQuery</a>
+                    by <span aria-label="J Query">jQuery</span> Foundation,
+                    <a rel="external" href="http://getbootstrap.com/">Bootstrap 3</a> by
+                    <span aria-label="Twitter Incorporated">Twitter, Inc.</span>,
+                    <a rel="external" href="https://github.com/FezVrasta/bootstrap-material-design">Bootstrap Material Design</a>
+                    by <span lang="it">Federico Zivolo</span> <em lang="la" aria-label="et alii">et al.</em>, and
+                    <a rel="external" href="https://github.com/aFarkas/lazysizes">lazysizes</a> by
+                    <span lang="de">Alexander Farkas</span>,
+                    each licensed under the <a rel="external" href="https://opensource.org/licenses/MIT">MIT License</a>.
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<script src="js/carrot.js"></script>
+</body>
+</html>
