@@ -92,63 +92,22 @@
                 <div class="carousel-container js-veil">
                     <div class="carousel slide" data-ride="carousel" id="screenshots-carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#screenshots-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#screenshots-carousel" data-slide-to="1"></li>
-                            <li data-target="#screenshots-carousel" data-slide-to="2"></li>
-                            <li data-target="#screenshots-carousel" data-slide-to="3"></li>
-                            <li data-target="#screenshots-carousel" data-slide-to="4"></li>
-                            <li data-target="#screenshots-carousel" data-slide-to="5"></li>
+                            <% screenshots.forEach(function(screenshot, i) { %>
+                            <li data-target="#screenshots-carousel" data-slide-to="<%= i %>"<% if (i == 0) {%>class="active"<% }%>></li>
+                            <% }); %>
                         </ol>
 
                         <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <a rel="external" href="assets/screen1.png"
-                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen1.png" alt="Dungeon Dilemma"
-                                ></a>
-                                <div class="carousel-caption">
-                                    Dungeon Dilemma
+                            <% screenshots.forEach(function(screenshot, i) { %>
+                                <div class="item <% if (i == 0) {%>active<% }%>">
+                                    <a rel="external" href="assets/<%= screenshot.name %>.jpg"
+                                    ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/<%= screenshot.name %>.png" alt="<%= screenshot.title %>"
+                                        ></a>
+                                    <div class="carousel-caption">
+                                        <%= screenshot.title %>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <a rel="external" href="assets/screen2.png"
-                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen2.png" alt="Tossed Salad"
-                                ></a>
-                                <div class="carousel-caption">
-                                    Tossed Salad
-                                </div>
-                            </div>
-                            <div class="item">
-                                <a rel="external" href="assets/screen3.png"
-                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen3.png" alt="Hare Scare"
-                                ></a>
-                                <div class="carousel-caption">
-                                    Hare Scare
-                                </div>
-                            </div>
-                            <div class="item">
-                                <a rel="external" href="assets/screen4.png"
-                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen4.png" alt="Easter Bunny"
-                                ></a>
-                                <div class="carousel-caption">
-                                    Easter Bunny
-                                </div>
-                            </div>
-                            <div class="item">
-                                <a rel="external" href="assets/screen5.png"
-                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen5.png" alt="Jungle Jump"
-                                ></a>
-                                <div class="carousel-caption">
-                                    Jungle Jump
-                                </div>
-                            </div>
-                            <div class="item">
-                                <a rel="external" href="assets/screen6.png"
-                                ><img class="lazyload" src="assets/screen_placeholder.gif" data-src="assets/screen6.png" alt="Main Menu"
-                                ></a>
-                                <div class="carousel-caption">
-                                    Main Menu
-                                </div>
-                            </div>
+                            <% }); %>
                         </div>
 
                         <a class="left carousel-control" href="#screenshots-carousel" role="button" data-slide="prev">
@@ -163,26 +122,12 @@
                 </div>
                 <noscript aria-hidden="true">
                     <div class="noscript-img-container">
-                        <div class="img-thumbnail">
-                            <a rel="external" href="assets/screen1.png"><img src="assets/screen1.jpg" alt="Dungeon Dilemma"></a>
-                            <span>Dungeon Dilemma</span>
-                        </div>
-                        <div class="img-thumbnail">
-                            <a rel="external" href="assets/screen2.png"><img src="assets/screen2.jpg" alt="Tossed Salad"></a>
-                            <span>A Diamondus Forever</span>
-                        </div>
-                        <div class="img-thumbnail">
-                            <a rel="external" href="assets/screen3.png"><img src="assets/screen3.jpg" alt="Hare Scare"></a>
-                            <span>Hare Scare</span>
-                        </div>
-                        <div class="img-thumbnail">
-                            <a rel="external" href="assets/screen4.png"><img src="assets/screen4.jpg" alt="Easter Bunny"></a>
-                            <span>Spring Chickens</span>
-                        </div>
-                        <div class="img-thumbnail">
-                            <a rel="external" href="assets/screen4.png"><img src="assets/screen5.jpg" alt="Main Menu"></a>
-                            <span>Spring Chickens</span>
-                        </div>
+                        <% screenshots.forEach(function(screenshot) { %>
+                            <div class="img-thumbnail">
+                                <a rel="external" href="assets/<%= screenshot.name %>.png"><img src="assets/<%= screenshot.name %>.jpg" alt="<%= screenshot.title %>"></a>
+                                <span><%= screenshot.title %></span>
+                            </div>
+                        <% }); %>
                     </div>
                 </noscript>
 

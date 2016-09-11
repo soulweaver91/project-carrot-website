@@ -38,7 +38,15 @@ gulp.task('build-html', () => {
   return gulp
     .src("./src/**/*.ejs")
     .pipe(ejs({
-      buildDate: new Date().toISOString()
+      buildDate: new Date().toISOString(),
+      screenshots: [
+        { name: 'screen1', title: 'Dungeon Dilemma' },
+        { name: 'screen2', title: 'Tossed Salad' },
+        { name: 'screen3', title: 'Hare Scare' },
+        { name: 'screen4', title: 'Easter Bunny' },
+        { name: 'screen5', title: 'Jungle Jump' },
+        { name: 'screen6', title: 'Main Menu' }
+      ]
     }, {
       ext: '.html'
     }))
