@@ -127,7 +127,18 @@ footer {
 
   .footer-build-info {
     margin-top: .5em;
+  }
+
+  .libs-licenses {
+    padding-left: .5em;
+  }
+
+  .footer-build-info, .libs-licenses {
     font-size: 80%;
+
+    strong {
+      font-weight: 500;
+    }
   }
 }
 
