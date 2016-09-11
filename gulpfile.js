@@ -11,6 +11,7 @@ var fs = require('fs');
 var zip = require('gulp-zip');
 var argv = require('yargs').argv;
 var git = require('git-rev-sync');
+var ftp = require('vinyl-ftp');
 
 gulp.task('build-js', (cb) => {
   return webpack({
@@ -207,4 +208,19 @@ gulp.task('archive', () => {
   return Promise.all(promises);
 });
 
+gulp.task('deploy', () => {
+  var connection = ftp.create(Object.assign({
+    parallel: 10
+  }, config.deploy.connection));
+
+  return gulp
+    .src([ 'dist/**/*' ], {
+      base: 'dist',
+      buffer: false
+    })
+    .pipe(connection.dest(config.deploy.directory));
+});
+
 gulp.task('build', [ 'build-js', 'build-style', 'build-html', 'copy-fonts', 'copy-assets', 'optimize-ss', 'gen-ss-thumbs' ]);
+
+gulp.task('release', [ 'build', 'deploy' ]);

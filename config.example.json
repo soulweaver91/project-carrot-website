@@ -1,4 +1,13 @@
 {
+  "deploy": {
+    "connection": {
+      "host": "example.org",
+      "user": "user",
+      "password": "pass",
+      "secure": true
+    },
+    "directory": "/public_html/"
+  },
   "screenshots": [
     {
       "name": "filename_without_extension",
