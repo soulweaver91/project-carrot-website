@@ -8,6 +8,7 @@ var semver = require('semver');
 var moment = require('moment');
 var config = require('./config.json');
 var fs = require('fs');
+var zip = require('gulp-zip');
 
 gulp.task('build-js', (cb) => {
   return webpack({
@@ -40,6 +41,7 @@ gulp.task('build-style', () => {
 });
 
 gulp.task('build-html', () => {
+  var filesRoot = './dist/files/';
   var fileData = {};
   for (var product in config.modules) {
     fileData[product] = {
@@ -55,45 +57,49 @@ gulp.task('build-html', () => {
     };
   }
 
-  fs.readdirSync('./files').forEach((item) => {
-    var parts = item.match(/^([a-z\-]+?)(?:-([0-9\.]+))?-(x86|x64)\.zip$/);
-    if (parts) {
-      if (!fileData[parts[1]]) {
-        return;
-      }
-      
-      if (parts[2] === undefined) {
-        parts[2] = '0.0.0';
-      }
+  try {
+    fs.readdirSync(filesRoot).forEach((item) => {
+      var parts = item.match(/^([a-z\-]+?)(?:-([0-9\.]+))?-(x86|x64)\.zip$/);
+      if (parts) {
+        if (!fileData[parts[1]]) {
+          return;
+        }
 
-      if (fileData[parts[1]].version == null || semver.gt(parts[2], fileData[parts[1]].version)) {
-        fileData[parts[1]] = Object.assign(fileData[parts[1]], {
+        if (parts[2] === undefined) {
+          parts[2] = '0.0.0';
+        }
+
+        if (fileData[parts[1]].version == null || semver.gt(parts[2], fileData[parts[1]].version)) {
+          fileData[parts[1]] = Object.assign(fileData[parts[1]], {
+            version: parts[2],
+            files: {
+              x86: null,
+              x64: null
+            },
+            released: null
+          });
+        }
+
+        var stats = fs.statSync(filesRoot + parts[0]);
+
+        fileData[parts[1]].released = (fileData[parts[1]].released == null
+          ? moment(stats.mtime)
+          : moment.min(fileData[parts[1]].released, moment(stats.mtime))
+        );
+
+        fileData[parts[1]].files[parts[3]] = {
+          fullFilename: parts[0],
+          module: parts[1],
           version: parts[2],
-          files: {
-            x86: null,
-            x64: null
-          },
-          released: null
-        });
+          architecture: parts[3],
+          platform: 'windows',
+          stats: stats
+        };
       }
-
-      var stats = fs.statSync('./files/' + parts[0]);
-
-      fileData[parts[1]].released = (fileData[parts[1]].released == null
-        ? moment(stats.mtime)
-        : moment.min(fileData[parts[1]].released, moment(stats.mtime))
-      );
-
-      fileData[parts[1]].files[parts[3]] = {
-        fullFilename: parts[0],
-        module: parts[1],
-        version: parts[2],
-        architecture: parts[3],
-        platform: 'windows',
-        stats: stats
-      };
-    }
-  });
+    });
+  } catch (e) {
+    // Files not available (gulp archive not run?), just don't render the files as available.
+  }
 
   return gulp
     .src("./src/**/*.ejs")
@@ -145,6 +151,29 @@ gulp.task('gen-ss-thumbs', () => {
       quality: 0.8
     }))
     .pipe(gulp.dest('dist/assets'))
+});
+
+gulp.task('archive', () => {
+  var promises = [];
+  for (let moduleName in config.archives) {
+    let module = config.archives[moduleName];
+    let version = (!module.version ? '' : '-' + module.version);
+    
+    module.platforms.forEach((platform) => {
+      promises.push(new Promise((resolve, reject) => {
+        var outputFilename = `${moduleName}${version}-${platform.architecture}.zip`;
+
+        gulp
+          .src(platform.files.concat(module.commonFiles))
+          .pipe(zip(outputFilename))
+          .pipe(gulp.dest('dist/files'))
+          .on('end', resolve)
+          .on('error', reject)
+      }));
+    });
+  }
+
+  return Promise.all(promises);
 });
 
 gulp.task('build', [ 'build-js', 'build-style', 'build-html', 'copy-fonts', 'copy-assets', 'optimize-ss', 'gen-ss-thumbs' ]);

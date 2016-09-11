@@ -15,8 +15,7 @@ npm install -g gulp-cli
 npm install
 cp config.example.json config.json
 # Edit the config
-# Copy the downloadables to a folder called files
-# and screenshots to a folder called screenshots
+# Copy the your screenshots to a folder called screenshots
 gulp build
 ```
 
