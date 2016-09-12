@@ -6,10 +6,14 @@ $(function() {
   var scrollToSection = function(hash) {
     var pos = 0;
     var container = '';
+
     if ($('body')[0].clientWidth == $('#contentMain')[0].clientWidth) {
-      container = 'body';
+      // Mobile (nav on top) view
+      // html is required for this to work in Firefox for whatever reason
+      container = 'html, body';
       pos = $(hash).offset().top;
     } else {
+      // Desktop (nav on left) view
       container = '#contentMain';
       pos = $(hash).position().top - $(hash).parent().position().top;
     }
@@ -19,7 +23,7 @@ $(function() {
     }, 250, function(){
       window.history.pushState(null, null, hash);
     });
-  }
+  };
 
   $("ul.nav li a").on('click', function(e) {
     var hash = this.hash;
