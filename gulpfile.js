@@ -142,8 +142,8 @@ gulp.task('copy-fonts', () => {
     .src([
       './node_modules/bootstrap-sass/assets/fonts/bootstrap/*',
       './node_modules/font-awesome/fonts/*',
-      './node_modules/roboto-fontface/fonts/Roboto/Roboto-+(Light|Regular|Medium|Bold).*',
-      './node_modules/roboto-fontface/fonts/Roboto/Roboto-+(Light|Regular|Medium|Bold)Italic.*'
+      './node_modules/roboto-fontface/fonts/@(Roboto)/Roboto-+(Light|Regular|Medium|Bold).*',
+      './node_modules/roboto-fontface/fonts/@(Roboto)/Roboto-+(Light|Regular|Medium|Bold)Italic.*'
     ])
     .pipe(gulp.dest('./dist/fonts'));
 });
