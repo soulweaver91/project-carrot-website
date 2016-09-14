@@ -15,11 +15,14 @@ npm install -g gulp-cli
 npm install
 cp config.example.json config.json
 # Edit the config
+# Run "gulp archive" to create the release archives
+# (if you only want to create archives for a certain product, use the --product switch)
 # Copy the your screenshots to a folder called screenshots
 gulp build
 ```
 
-The output will be in the `dist` folder. Deployment command will be implemented later.
+The output will be in the `dist` folder. If you've specified proper FTP credentials in your config, you can then
+deploy the site by running `gulp deploy`.
 
 License
 -------
