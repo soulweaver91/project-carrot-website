@@ -17,7 +17,7 @@ cp config.example.json config.json
 # Edit the config
 # Run "gulp archive" to create the release archives
 # (if you only want to create archives for a certain product, use the --product switch)
-# Copy the your screenshots to a folder called screenshots
+# Copy your screenshots to a folder called screenshots
 gulp build
 ```
 
