@@ -129,7 +129,7 @@ gulp.task('build-html', () => {
       screenshots: config.screenshots,
       files: fileData,
       dateFormat: 'Do MMMM, YYYY',
-      timeFormat: 'HH:mm:ss',
+      timeFormat: 'HH:mm:ss (Z)',
       git: gitData
     }, {
       ext: '.html'
